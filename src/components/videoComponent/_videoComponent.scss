@@ -1,0 +1,61 @@
+@import "../../_base.scss";
+
+.videoComponent {
+    margin-bottom: 1rem;
+    padding: 0.7rem;
+
+    font-weight: 500;
+    font-size: 0.9rem;
+
+    cursor: pointer;
+
+    &__top {
+        margin-bottom: 0.5rem;
+        position: relative;
+
+        img {
+            height: 180px;
+            width: 320px;
+        }
+        span {
+            position: absolute;
+
+            bottom: 0.1rem;
+            right: 1.2rem;
+
+            padding: 0.2rem;
+            background-color: #080808ec;
+            border-radius: 3px;
+        }
+    }
+
+    &__title {
+        margin-bottom: 0.1rem;
+        color: #fff;
+
+        @include l-clamp(1);
+    }
+
+    &__details {
+        display: flex;
+        align-items: center;
+    }
+
+    &__channel {
+        display: flex;
+        align-items: center;
+        max-resolution: 0.5rem 0;
+
+        img {
+            width: 36px;
+            height: 36px;
+
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            cursor: pointer;
+        }
+        p {
+            margin-bottom: 0;
+        }
+    }
+}
