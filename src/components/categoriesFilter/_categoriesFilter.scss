@@ -5,14 +5,15 @@
     font-size: 0.8rem;
 
     display: flex;
-    overflow-x: hidden;
+    overflow-x: scroll;
 
     &::-webkit-scrollbar{
         width: 0px;
     }
 
     scrollbar-width: none;
-
+    
+    
     span {
         margin-right: 1rem;
         padding: 0.5rem;
@@ -20,10 +21,10 @@
         white-space: nowrap;
         border: 1.5px solid $text-color;
         border-radius: 999px;
+        cursor: pointer;
 
         &:hover{
             background-color: #374a59;
-            cursor: pointer;
         }
 
         &:active{

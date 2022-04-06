@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import {
+  getPopularVideos,
+  getVideosByCategory,
+} from "../../redux/actions/videos.action";
 import "./_categoriesFilter.scss";
 
 const keywords = [
@@ -24,16 +29,15 @@ const keywords = [
 const CategoriesFilter = () => {
   const [activeElement, setActiveElement] = useState("All");
 
+  const dispatch = useDispatch();
   const handleClick = (value) => {
     setActiveElement(value);
+    if (value === "All") {
+      dispatch(getPopularVideos());
+    } else {
+      dispatch(getVideosByCategory(value));
+    }
   };
-
-  const scrollContainer = document.querySelector("div");
-
-  scrollContainer.addEventListener("wheel", (evt) => {
-    evt.preventDefault();
-    scrollContainer.scrollLeft += evt.deltaY;
-  });
 
   return (
     <div className="categories__filter">
