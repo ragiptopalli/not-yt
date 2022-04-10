@@ -2,21 +2,21 @@ import {
   HOME_VIDEOS_FAIL,
   HOME_VIDEOS_REQUEST,
   HOME_VIDEOS_SUCCESS,
-} from "../actionType";
+} from "../actionTypes";
 import requestVideos from "../../api.js";
 
 export const getPopularVideos = () => async (dispatch, getState) => {
+  dispatch({
+    type: HOME_VIDEOS_REQUEST,
+  });
   try {
-    dispatch({
-      type: HOME_VIDEOS_REQUEST,
-    });
-
     const { data } = await requestVideos("/videos", {
       params: {
         part: "snippet, contentDetails, statistics",
         chart: "mostPopular",
-        maxResults: 3,
+        maxResults: 21,
         pageToken: getState().homeVideoItems.nextPageToken,
+        regionCode: "AL",
       },
     });
 
@@ -37,19 +37,18 @@ export const getPopularVideos = () => async (dispatch, getState) => {
   }
 };
 
-export const getVideosByCategory = (keyword) => async (dispatch, getState) => {
+export const getVideosByCategory = (q) => async (dispatch, getState) => {
   try {
     dispatch({
       type: HOME_VIDEOS_REQUEST,
     });
-
     const { data } = await requestVideos("/search", {
       params: {
         part: "snippet",
-        maxResults: 0,
-        pageToken: getState().homeVideoItems.nextPageToken,
-        q: keyword,
+        q,
         type: "video",
+        maxResults: 21,
+        pageToken: getState().homeVideoItems.nextPageToken,
       },
     });
 
@@ -58,7 +57,7 @@ export const getVideosByCategory = (keyword) => async (dispatch, getState) => {
       payload: {
         videoItems: data.items,
         nextPageToken: data.nextPageToken,
-        category: keyword,
+        category: q,
       },
     });
   } catch (error) {

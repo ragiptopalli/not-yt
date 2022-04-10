@@ -2,7 +2,7 @@ import {
   HOME_VIDEOS_FAIL,
   HOME_VIDEOS_REQUEST,
   HOME_VIDEOS_SUCCESS,
-} from "../actionType";
+} from "../actionTypes";
 
 export const homeVideoItemsReducer = (
   state = {

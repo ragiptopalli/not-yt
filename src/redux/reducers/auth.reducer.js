@@ -4,7 +4,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOG_OUT,
-} from "../actionType";
+} from "../actionTypes";
 
 const initialState = {
   accessToken: sessionStorage.getItem("yt-not-really-access-token")
