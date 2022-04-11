@@ -23,7 +23,7 @@ body {
     letter-spacing: 0.1px;
 }
 
-@mixin l-clamp($number) {
+@mixin line-clamp($number) {
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: $number;

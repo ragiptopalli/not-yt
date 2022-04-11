@@ -38,7 +38,7 @@ const HomeScreen = () => {
   };
 
   useEffect(() => {
-    if (!accessToken) navigate.push("/auth");
+    if (!accessToken) navigate("/auth");
     dispatch(getPopularVideos());
   }, [navigate, dispatch, accessToken]);
 
