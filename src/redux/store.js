@@ -4,15 +4,21 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 
 import { authReducer } from "./reducers/auth.reducer";
-import { homeVideoItemsReducer } from "./reducers/videoItems.reducer";
+import {
+  homeVideoItemsReducer,
+  relatedVideoReducer,
+} from "./reducers/videoItems.reducer";
 import { selectedVideoReducer } from "./reducers/videoItems.reducer";
 import { channelDetailsReducer } from "../redux/reducers/channel.reducer";
+import { commentListReducer } from "./reducers/comments.reducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
   homeVideoItems: homeVideoItemsReducer,
   selectedVideo: selectedVideoReducer,
   channelDetails: channelDetailsReducer,
+  commentList: commentListReducer,
+  relatedVideo: relatedVideoReducer,
 });
 
 const store = createStore(

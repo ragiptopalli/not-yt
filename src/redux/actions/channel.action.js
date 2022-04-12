@@ -46,7 +46,6 @@ export const checkSubscriptionStatus =
           Authorization: `Bearer ${getState().auth.accessToken}`,
         },
       });
-      console.log(getState().auth.accessToken);
       dispatch({
         type: CHANNEL_SUBSCRIPTION_STATUS,
         payload: data.items.length !== 0,
