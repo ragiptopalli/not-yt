@@ -11,7 +11,7 @@ import { Col, Row } from "react-bootstrap";
 import requestVideos from "../../api";
 import { useNavigate } from "react-router-dom";
 
-const VideoHorizontal = ({ video }) => {
+const VideoHorizontal = ({ video, searchScreen }) => {
   const {
     id,
     snippet: { channelId, channelTitle, title, publishedAt, thumbnails },
@@ -66,7 +66,7 @@ const VideoHorizontal = ({ video }) => {
       className="videoHorizontal m-1 py-2 align-items-center"
       onClick={handleClick}
     >
-      <Col xs={6} md={4} className="videoHorizontal__left">
+      <Col xs={6} md={searchScreen ? 4 : 6} className="videoHorizontal__left">
         <LazyLoadImage
           src={thumbnails?.medium.url}
           effect="blur"
@@ -75,7 +75,11 @@ const VideoHorizontal = ({ video }) => {
         />
         <span className="videoHorizontal__duration">{_duration}</span>
       </Col>
-      <Col xs={6} md={8} className="videoHorizontal__right p-0">
+      <Col
+        xs={6}
+        md={searchScreen ? 8 : 6}
+        className="videoHorizontal__right p-0"
+      >
         <p className="videoHorizontal__title mb-1">{title}</p>
         <div className="videoHorizontal__details">
           <AiFillEye /> {numeral(views).format("0.a")} Views •
